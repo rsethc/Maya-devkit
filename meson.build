@@ -26,7 +26,7 @@ elif build_machine.system()=='windows'
 elif build_machine.system()=='linux'
 	location = '/usr/autodesk/maya2025'
 else
-	error('Platform not supported (yet)')
+	error('Maya headers for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
 defines += [ '-DMAYA_LOCATION="'+location+'"' ]
 compile_args += defines
@@ -49,7 +49,7 @@ elif build_machine.system()=='windows'
 	OpenMayaUI = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(windows_libs, 'OpenMayaUI.lib') ] )
 	Foundation = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(windows_libs, 'Foundation.lib') ] )
 else
-	error('System not supported yet')
+	error('Maya libraries for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
 
 qt_plugins_dir = 'plugins'
@@ -69,5 +69,5 @@ elif build_machine.system()=='windows'
 		'PATH=%PATH%;'+join_paths(location,'bin')
 	]
 else
-	error('Platform not supported (yet)')
+	error('Test environment for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
