@@ -14,10 +14,6 @@ maya_version = get_option('maya_version')
 defines = [ '-DMAYA_VERSION='+maya_version ]
 compile_args = [ ]
 
-# error('test error to confirm this script is being used by the outer build')
-# https://stackoverflow.com/a/78567855/1917534
-message('build_machine.system() is: @0@'.format(build_machine.system()))
-
 if build_machine.system()=='darwin'
 	location = '/Applications/Autodesk/maya'+maya_version
 	defines += [ '-DOSMac_' ]
@@ -27,7 +23,7 @@ elif build_machine.system()=='windows'
 	endif
 	location = 'C:/Program Files/Autodesk/maya'+maya_version
 	defines += [ '-D_BOOL' ]
-elif build_machine.system()=='fedora'
+elif build_machine.system()=='linux'
 	location = '/usr/local/bin/maya'
 else
 	error('Platform not supported (yet)')
