@@ -24,7 +24,7 @@ elif build_machine.system()=='windows'
 	location = 'C:/Program Files/Autodesk/maya'+maya_version
 	defines += [ '-D_BOOL' ]
 elif build_machine.system()=='linux'
-	location = '/usr/local/bin/maya'
+	location = '/usr/autodesk/maya2025'
 else
 	error('Platform not supported (yet)')
 endif
