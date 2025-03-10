@@ -80,6 +80,9 @@ elif build_machine.system()=='windows'
 	]
 elif build_machine.system()=='linux'
 	# Note that this currently is just distinguishing Fedora 40 from non-Linux.
+	test_environment = [
+		'QT_PLUGIN_PATH='+join_paths(location,qt_plugins_dir),
+	]
 else
 	error('Test environment for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
