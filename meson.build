@@ -15,7 +15,7 @@ defines = [ '-DMAYA_VERSION='+maya_version ]
 compile_args = [ ]
 
 # https://stackoverflow.com/a/78567855/1917534
-message('@0@'.format(build_machine.system()))
+message('build_machine.system() is: @0@'.format(build_machine.system()))
 
 if build_machine.system()=='darwin'
 	location = '/Applications/Autodesk/maya'+maya_version
