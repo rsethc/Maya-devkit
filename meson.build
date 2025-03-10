@@ -14,7 +14,7 @@ maya_version = get_option('maya_version')
 defines = [ '-DMAYA_VERSION='+maya_version ]
 compile_args = [ ]
 
-error('test error to confirm this script is being used by the outer build')
+# error('test error to confirm this script is being used by the outer build')
 # https://stackoverflow.com/a/78567855/1917534
 message('build_machine.system() is: @0@'.format(build_machine.system()))
 
