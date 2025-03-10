@@ -24,6 +24,7 @@ elif build_machine.system()=='windows'
 	location = 'C:/Program Files/Autodesk/maya'+maya_version
 	defines += [ '-D_BOOL' ]
 elif build_machine.system()=='linux'
+	# Note that this currently is just distinguishing Fedora 40 from non-Linux.
 	location = '/usr/autodesk/maya2025'
 else
 	error('Maya headers for platform (@0@) not supported yet'.format(build_machine.system()))
@@ -48,6 +49,15 @@ elif build_machine.system()=='windows'
 	OpenMayaRender = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(windows_libs, 'OpenMayaRender.lib') ] )
 	OpenMayaUI = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(windows_libs, 'OpenMayaUI.lib') ] )
 	Foundation = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(windows_libs, 'Foundation.lib') ] )
+elif build_machine.system()=='linux'
+	# Note that this currently is just distinguishing Fedora 40 from non-Linux.
+	linux_libs = join_paths(location,'lib')
+	OpenMaya = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMaya.so') ] )
+	OpenMayaAnim = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaAnim.so') ] )
+	OpenMayaFX = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaFX.so') ] )
+	OpenMayaRender = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaRender.so') ] )
+	OpenMayaUI = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaUI.so') ] )
+	Foundation = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'Foundation.so') ] )
 else
 	error('Maya libraries for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
@@ -68,6 +78,8 @@ elif build_machine.system()=='windows'
 		'QT_PLUGIN_PATH='+join_paths(location,qt_plugins_dir),
 		'PATH=%PATH%;'+join_paths(location,'bin')
 	]
+elif build_machine.system()=='linux'
+	# Note that this currently is just distinguishing Fedora 40 from non-Linux.
 else
 	error('Test environment for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
