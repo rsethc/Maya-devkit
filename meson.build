@@ -52,12 +52,12 @@ elif build_machine.system()=='windows'
 elif build_machine.system()=='linux'
 	# Note that this currently is just distinguishing Fedora 40 from non-Linux.
 	linux_libs = join_paths(location,'lib')
-	OpenMaya = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMaya.so') ] )
-	OpenMayaAnim = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaAnim.so') ] )
-	OpenMayaFX = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaFX.so') ] )
-	OpenMayaRender = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaRender.so') ] )
-	OpenMayaUI = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'OpenMayaUI.so') ] )
-	Foundation = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'Foundation.so') ] )
+	OpenMaya = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'libOpenMaya.so') ] )
+	OpenMayaAnim = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'libOpenMayaAnim.so') ] )
+	OpenMayaFX = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'libOpenMayaFX.so') ] )
+	OpenMayaRender = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'libOpenMayaRender.so') ] )
+	OpenMayaUI = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'libOpenMayaUI.so') ] )
+	Foundation = declare_dependency( include_directories: includes, compile_args: compile_args, link_args: [ join_paths(linux_libs, 'libFoundation.so') ] )
 else
 	error('Maya libraries for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
