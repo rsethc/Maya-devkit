@@ -25,7 +25,7 @@ elif build_machine.system()=='windows'
 	defines += [ '-D_BOOL' ]
 elif build_machine.system()=='linux'
 	# Note that this currently is just distinguishing Fedora 40 from non-Linux.
-	location = '/usr/autodesk/maya2025'
+	location = '/usr/autodesk/maya'+maya_version
 else
 	error('Maya headers for platform (@0@) not supported yet'.format(build_machine.system()))
 endif
